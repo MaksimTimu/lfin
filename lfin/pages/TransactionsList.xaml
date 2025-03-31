@@ -1,0 +1,44 @@
+﻿<Page x:Class="lfin.pages.TransactionsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:lfin.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TransactionsList">
+
+    <Grid Background="White">
+        <Grid.Resources>
+            <local:FunctionConverter x:Key="FunctionConverter"/>
+            <local:FunctionConverter2 x:Key="FunctionConverter2"/>
+        </Grid.Resources>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="Cyan">
+
+            <Button Margin="10" Content="Новая транзакция" Click="Button_Click"/>
+            <Button Margin="10" Content="Удалить" Click="Button_Click_1"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView Grid.Row="1" Height="350" x:Name="TxListt">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Счёт" DisplayMemberBinding="{Binding account_id, Converter={StaticResource FunctionConverter}}"/>
+                        <GridViewColumn Header="Движение средств" DisplayMemberBinding="{Binding amount}"/>
+                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding date}"/>
+                        <GridViewColumn Header="Описание" DisplayMemberBinding="{Binding description}" />
+                        <GridViewColumn Header="Категории" DisplayMemberBinding="{Binding id, Converter={StaticResource FunctionConverter2}}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <TextBox x:Name="loh" HorizontalAlignment="Left" Margin="214,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="270" TextChanged="TextBox_TextChanged"/>
+    </Grid>
+</Page>

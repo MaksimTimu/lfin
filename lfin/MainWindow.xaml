@@ -1,0 +1,34 @@
+﻿<Window x:Class="lfin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lfin"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <!-- Определение колонок в Grid -->
+        <Grid.ColumnDefinitions>
+            <!-- Первая колонка с автоматической шириной (под размер содержимого) -->
+            <ColumnDefinition Width="auto"/>
+            <!-- Вторая колонка, занимающая всё оставшееся пространство -->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="Coral">
+            <Button Margin="10" FontSize="16" Content="Cчета" Click="Navigating" Tag="AccountsList.xaml"/>
+            <Button Margin="10" FontSize="16" Content="Транзакции" Click="Navigating" Tag="TransactionsList.xaml"/>
+            <Button Margin="10" FontSize="16" Content="Категории" Click="Navigating" Tag="CategoriesList.xaml"/>
+        </StackPanel>
+
+        <!-- Frame для отображения контента во второй колонке -->
+        <Frame Grid.Column="1" x:Name="MainFrame" Background="Transparent" NavigationUIVisibility="Hidden"/>
+        <!-- 
+        - Grid.Column="1": Размещение во второй колонке Grid.
+        - x:Name="MainFrame": Имя элемента для доступа из кода.
+        - Background="Transparent": Прозрачный фон.
+        - NavigationUIVisibility="Hidden": Скрытие стандартных элементов навигации (например, кнопок "Назад" и "Вперед").
+    -->
+
+    </Grid>
+</Window>
