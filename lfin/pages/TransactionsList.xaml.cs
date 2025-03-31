@@ -19,7 +19,7 @@ namespace lfin.pages
 {
     public class FunctionConverter : IValueConverter
     {
-        public string FunctionName { get; set; }
+        public string FunctionName { get; set; }//
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
